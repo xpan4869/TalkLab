@@ -7,7 +7,7 @@
 #     1) WhisperX ASR
 #     2) Forced alignment
 #     3) Pyannote-based speaker diarization (via WhisperX)
-#   Produces a speaker-labeled, *segment-level* transcript as CSV.
+#   Produces a speaker-labeled, segment-level transcript as CSV.
 
 # Reference: https://github.com/m-bain/whisperX
 
@@ -17,11 +17,10 @@ import gc
 import torch
 import os
 import csv
-from datetime import timedelta
 from whisperx.diarize import DiarizationPipeline
 
 # =========================================================================
-#  ⬇️ UPDATED FIX FOR PYTORCH 2.6+ (AGGRESSIVE) ⬇️
+#  UPDATED FIX FOR PYTORCH 2.6+ (AGGRESSIVE)
 # =========================================================================
 _original_torch_load = torch.load
 def _patched_torch_load(*args, **kwargs):
@@ -59,12 +58,6 @@ MAX_SPEAKERS = 2
 
 
 # ------------------ Define Functions ------------------ #
-def format_time(seconds):
-    """
-    Formats seconds into HH:MM:SS.mmm string for readability.
-    """
-    return str(timedelta(seconds=seconds))[:-3] # Truncate microseconds for cleaner output
-
 def run_asr(audio_file):
     """Transcribe with original whisper (batched)"""
     print("Loading transcribe model...")
