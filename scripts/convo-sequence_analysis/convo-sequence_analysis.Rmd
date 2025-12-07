@@ -161,7 +161,7 @@ ggplot(trans_data, aes(x = sequence_type, y = prob, fill = next_type, alpha = sp
   )
 ```
 
-Figure 2 shows that when a question is followed by another question, this transition most often occurs within the same speaker. Surprisingly, 52% of all Question → Question sequences are self-generated rather than produced by the partner. This indicates that questions are frequently used to continue speaking, often through multi-part or elaborating inquiries, rather than immediately handing over the floor.
+Figure 2 shows that when a question is followed by another question, this transition most often occurs within the same speaker. Surprisingly, 65% of all Question → Question sequences are self-generated rather than produced by the partner. This indicates that questions are frequently used to continue speaking, often through multi-part or elaborating inquiries, rather than immediately handing over the floor.
 
 After a disclosure, the next turn is most likely to be another disclosure, regardless of whether the same speaker continues or the floor switches. This pattern shows that disclosure tends to sustain itself and create momentum. Once sharing begins, it is likely to continue, forming a stable rhythm of reciprocal or ongoing disclosure.
 
@@ -278,15 +278,4 @@ model_h1 <- lmer(partner_rating ~ reciprocity_score + responsiveness_score +
 summary(model_h1)
 ```
 
-**H2: The Escalation Hypothesis (Timing)**
-
-Controlling for total disclosure volume, escalation slope (rate of increase in disclosure) will predict “Good Conversationalist” ratings.
-
-Conversations benefit from pacing. Social Penetration Theory emphasizes gradual deepening. Two failure modes can be either too much sharing too early or never reach the depth.
-
-```{r eval=FALSE}
-model_h2 <- lmer(partner_rating ~ escalation_slope + total_disclosure_ratio + (1 | interaction_id),
-                 data = speaker_level_data)
-
-summary(model_h2)
-```
+To evaluate this hypothesis, we could fit a linear regression model in which the reciprocity and responsiveness scores of each participant served as predictors of their partner’s perceived good convsersationist rating.

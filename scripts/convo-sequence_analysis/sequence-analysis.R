@@ -146,6 +146,3 @@ df_temporal_speaker |>
 # Models (not evaluated)
 # model_h1 <- lmer(partner_rating ~ reciprocity_score + responsiveness_score +
 #                    (1 | interaction_id), data = speaker_level_data)
-
-# model_h2 <- lmer(partner_rating ~ escalation_slope + total_disclosure_ratio +
-#                    (1 | interaction_id), data = speaker_level_data)
