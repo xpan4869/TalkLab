@@ -7,6 +7,10 @@
 #   1. Text Feature: Sentiment Valence (VADER) - Measures emotional content (-1 to +1).
 #   2. Audio Feature: Pitch Variability (F0 Std Dev) - Measures vocal engagement/prosody.
 
+# References: 
+# https://www.nltk.org/api/nltk.sentiment.vader.html
+# https://librosa.org/doc/main/generated/librosa.pyin.html
+
 import pandas as pd
 import numpy as np
 import librosa
@@ -45,7 +49,7 @@ def get_pitch_variability(y_segment, sr):
         sr=sr
     )
     
-    # Filter out NaNs (unvoiced parts like silence or breath)
+    # Filter out NaNs
     f0_clean = f0[~np.isnan(f0)]
     
     if len(f0_clean) == 0:
